@@ -4,6 +4,7 @@ import Control.Monad
 import Data.Char
 
 import System.Exit
+import System.IO
 import System.Process
 
 import qualified Text.XML.Light as XML
@@ -29,14 +30,14 @@ main = do
 
 runTests :: IO [TestResult]
 runTests = do
-  tst <- readFile "test.agda"
+  tst <- readFileUTF8 "test.agda"
   let tests = getTests tst
 
   forM tests $ \(testName,testBody) -> do
 
     let testFile = testName++".agda"
   
-    writeFile testFile $ unlines $
+    writeFileUTF8 testFile $ unlines $
       [ "open import library"
       , "open import solution"
       , ""
@@ -81,6 +82,21 @@ formatResults rs =
 
 writeResults :: FilePath -> [TestResult] -> IO ()
 writeResults outputFile rs =
-  writeFile outputFile $
+  writeFileUTF8 outputFile $
   XML.ppTopElement $
   formatResults rs
+
+readFileUTF8 :: String -> IO String
+readFileUTF8 filename = do
+  inputHandle <- openFile filename ReadMode
+  hSetEncoding inputHandle utf8
+  fileContents <- hGetContents inputHandle
+  return fileContents
+
+writeFileUTF8 :: String -> String -> IO ()
+writeFileUTF8 filename content = do
+  outputHandle <- openFile filename WriteMode
+  hSetEncoding outputHandle utf8
+  hPutStr outputHandle content
+  hClose outputHandle
+
