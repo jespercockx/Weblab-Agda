@@ -30,16 +30,17 @@ RUN set -o errexit -o nounset \
 WORKDIR ${UHOME}
 ENV HOME ${UHOME}
 COPY --chown=${UNAME} testrunner/ ${UHOME}
-RUN apt-get update && apt-get install -y \
-      ghc \
-      cabal-install \
+RUN add-apt-repository ppa:hvr/ghc \
+ && apt-get update && apt-get install -y \
+      ghc-9.0.1 \
+      cabal-install-3.4 \
       agda-bin \
       libghc-agda-dev \
     --no-install-recommends \
  && rm -r /var/lib/apt/lists/* \
  && cabal new-update \
- && cabal install --enable-executable-dynamic xml \
- && cabal install --enable-executable-dynamic \
+ && cabal v2-install --enable-executable-dynamic --lib xml \
+ && cabal v2-install --enable-executable-dynamic \
  && rm ~/.cabal/packages/hackage.haskell.org/*-index.* \
  && rm -r /lib/ghc/Cabal-* \
  && find ~/.cabal -type f -name '*.a' -exec rm {} + \
