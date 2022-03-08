@@ -1,0 +1,15 @@
+<?xml version='1.0' ?>
+<testsuites>
+  <testsuite>
+    <testcase>
+      <failure>Test typechecking failed!
+/user_code/solution.agda:2,2-2
+/user_code/solution.agda:2,2: Parse error
+..&lt;ERROR&gt;
+d;;sg{}{f
+...
+
+</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

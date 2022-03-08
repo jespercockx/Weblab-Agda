@@ -1,0 +1,21 @@
+<?xml version='1.0' ?>
+<testsuites>
+  <testsuite>
+    <testcase>
+      <failure>Test test-oneplusone failed!
+Checking test-oneplusone (/user_code/test-oneplusone.agda).
+/user_code/test-oneplusone.agda:8,19-23
+1 != 2 of type Nat
+when checking that the expression refl has type (1 + 1) 
+</failure>
+    </testcase>
+    <testcase>
+      <failure>Test test-twoplustwo failed!
+Checking test-twoplustwo (/user_code/test-twoplustwo.agda).
+/user_code/test-twoplustwo.agda:8,19-23
+2 != 4 of type Nat
+when checking that the expression refl has type (2 + 2) 
+</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
