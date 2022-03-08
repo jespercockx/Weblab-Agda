@@ -21,6 +21,9 @@ outputFile = "output/results.xml"
 -- Precondition: files `library.agda`, `solution.agda`, and `test.agda` are present.
 main :: IO ()
 main = do
+  -- Add --allow-unsolved-metas flag to solution
+  sol <- readFile' "solution.agda"
+  writeFile "solution.agda" $ unlines ["{-# OPTIONS --allow-unsolved-metas #-}"] ++ sol
 
   -- First check if the solution typechecks
   (exit, out, err) <- readProcessWithExitCode "agda" ["solution.agda"] ""
@@ -36,7 +39,7 @@ runTests = do
   forM tests $ \(testName,testBody) -> do
 
     let testFile = testName++".agda"
-  
+
     writeFileUTF8 testFile $ unlines $
       [ "open import library"
       , "open import solution"
@@ -58,9 +61,9 @@ getTests fileContents = loop id $ lines fileContents
     loop prev []          = []
     loop prev (curr:rest) =
       let name = defName curr in
-      if (take 5 name == "test-") then 
+      if (take 5 name == "test-") then
         let (test,rest') = span (\l -> null l || isSpace (head l) || defName l == name) rest
-        in  (name , prev (curr:test)) : loop prev rest' 
+        in  (name , prev (curr:test)) : loop prev rest'
       else loop (prev . (curr:)) rest
 
     defName = takeWhile $ not . isSpace
@@ -99,4 +102,3 @@ writeFileUTF8 filename content = do
   hSetEncoding outputHandle utf8
   hPutStr outputHandle content
   hClose outputHandle
-
