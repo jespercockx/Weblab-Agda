@@ -22,11 +22,11 @@ outputFile = "output/results.xml"
 main :: IO ()
 main = do
   -- Add --allow-unsolved-metas flag to solution
-  sol <- readFile' "solution.agda"
-  writeFile "solution.agda" $ unlines ["{-# OPTIONS --allow-unsolved-metas #-}"] ++ sol
+  sol <- readFileUTF8 "solution.agda"
+  writeFileUTF8 "Solution.agda" $ unlines ["{-# OPTIONS --allow-unsolved-metas #-}"] ++ sol
 
   -- First check if the solution typechecks
-  (exit, out, err) <- readProcessWithExitCode "agda" ["solution.agda"] ""
+  (exit, out, err) <- readProcessWithExitCode "agda" ["Solution.agda"] ""
   case exit of
     ExitSuccess{} -> writeResults outputFile =<< runTests
     ExitFailure{} -> writeResults outputFile [("typechecking",Left out)]
@@ -42,7 +42,7 @@ runTests = do
 
     writeFileUTF8 testFile $ unlines $
       [ "open import library"
-      , "open import solution"
+      , "open import Solution"
       , ""
       ] ++ testBody
 

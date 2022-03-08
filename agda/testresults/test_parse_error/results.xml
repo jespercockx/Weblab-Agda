@@ -3,8 +3,8 @@
   <testsuite>
     <testcase>
       <failure>Test typechecking failed!
-/user_code/solution.agda:2,2-2
-/user_code/solution.agda:2,2: Parse error
+/user_code/Solution.agda:2,2-2
+/user_code/Solution.agda:2,2: Parse error
 ..&lt;ERROR&gt;
 d;;sg{}{f
 ...
