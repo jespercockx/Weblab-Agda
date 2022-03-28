@@ -1,9 +1,9 @@
 <?xml version='1.0' ?>
 <testsuites>
   <testsuite>
-    <testcase />
-    <testcase />
-    <testcase />
-    <testcase />
+    <testcase name="test-2-halve0" weight="2" />
+    <testcase name="test-3-halve1" weight="3" />
+    <testcase name="test-4-halve8" weight="4" />
+    <testcase name="test-6-halve13" weight="6" />
   </testsuite>
 </testsuites>

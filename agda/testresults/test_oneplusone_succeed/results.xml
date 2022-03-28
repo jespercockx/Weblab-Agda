@@ -1,7 +1,7 @@
 <?xml version='1.0' ?>
 <testsuites>
   <testsuite>
-    <testcase />
-    <testcase />
+    <testcase name="test-oneplusone" weight="1" />
+    <testcase name="test-twoplustwo" weight="1" />
   </testsuite>
 </testsuites>

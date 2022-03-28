@@ -1,8 +1,8 @@
 <?xml version='1.0' ?>
 <testsuites>
   <testsuite>
-    <testcase>
-      <failure>Test typechecking failed!
+    <testcase name="typechecking failed" weight="1">
+      <failure>Test typechecking failed failed!
 /user_code/Solution.agda:2,2-2
 /user_code/Solution.agda:2,2: Parse error
 ..&lt;ERROR&gt;

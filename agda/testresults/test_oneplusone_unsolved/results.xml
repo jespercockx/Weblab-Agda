@@ -1,7 +1,7 @@
 <?xml version='1.0' ?>
 <testsuites>
   <testsuite>
-    <testcase>
+    <testcase name="test-oneplusone" weight="1">
       <failure>Test test-oneplusone failed!
 Checking test-oneplusone (/user_code/test-oneplusone.agda).
  Checking Solution (/user_code/Solution.agda).
@@ -10,7 +10,7 @@ Solution.unsolved#meta.3 0 1 != 1 of type Nat
 when checking that the expression refl has type (1 + 1) 
 </failure>
     </testcase>
-    <testcase>
+    <testcase name="test-twoplustwo" weight="1">
       <failure>Test test-twoplustwo failed!
 Checking test-twoplustwo (/user_code/test-twoplustwo.agda).
 /user_code/test-twoplustwo.agda:8,19-23
